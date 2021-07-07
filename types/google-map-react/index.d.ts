@@ -8,6 +8,12 @@ import * as React from 'react';
 
 declare class googleMapReact extends React.Component<googleMapReact.Props> {}
 
+interface GoogleMaps {
+    map: google.maps.Map;
+    maps: typeof google.maps;
+    ref: Element | null;
+}
+
 declare namespace googleMapReact {
     type BootstrapURLKeys = ({ key: string } | { client: string; v: string }) & {
         language?: string | undefined;
@@ -172,7 +178,7 @@ declare namespace googleMapReact {
         onMapTypeIdChange?(args: any): void;
         distanceToMouse?(pt: Point, mousePos: Point, markerProps?: object): number;
         googleMapLoader?(bootstrapURLKeys: any): void;
-        onGoogleApiLoaded?(maps: { map: any; maps: any; ref: Element | null }): void;
+        onGoogleApiLoaded?(maps: GoogleMaps): void;
         onTilesLoaded?(): void;
         yesIWantToUseGoogleMapApiInternals?: boolean | undefined;
         style?: React.CSSProperties | undefined;
